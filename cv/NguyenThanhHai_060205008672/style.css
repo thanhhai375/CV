@@ -21,6 +21,8 @@ body {
     overflow-x: hidden;
     position: relative;
     z-index: 1;
+    transform-origin: top left;
+    transition: transform 0.3s ease;
 }
 
 /* Hiệu ứng nền particles */
@@ -91,6 +93,44 @@ nav ul li a.download-cv:hover {
     box-shadow: 0 5px 15px var(--blue-glow);
 }
 
+/* Hamburger menu cho màn hình nhỏ */
+.nav-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: var(--primary-color);
+        padding: 20px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    nav ul.active {
+        display: flex;
+    }
+    nav ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+    nav ul li a {
+        font-size: 18px;
+    }
+}
+
 /* Section chung */
 .section {
     padding: 60px 20px;
@@ -127,7 +167,7 @@ nav ul li a.download-cv:hover {
 .header {
     background: linear-gradient(135deg, var(--primary-color), var(--accent-blue));
     color: var(--accent-color);
-    padding: 80px 0;
+    padding: 80px 20px;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -150,24 +190,27 @@ nav ul li a.download-cv:hover {
 
 .header-content {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     max-width: 1200px;
     width: 100%;
     padding: 0 20px;
     position: relative;
     z-index: 1;
+    gap: 20px;
 }
 
 .social-icons {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
+    flex: 0 0 auto;
 }
 
 .social-icons a {
     color: var(--accent-color);
-    font-size: 30px;
+    font-size: 28px;
     transition: transform 0.3s ease, filter 0.3s ease;
     opacity: 0;
     transform: translateX(-100%);
@@ -181,6 +224,8 @@ nav ul li a.download-cv:hover {
 
 .text-content {
     text-align: left;
+    flex: 1 1 50%;
+    max-width: 600px;
 }
 
 .gradient-text {
@@ -237,6 +282,8 @@ nav ul li a.download-cv:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: float 6s ease-in-out infinite;
+    flex: 0 0 auto;
+    max-width: 100%;
 }
 
 .header .image-frame:hover {
@@ -245,8 +292,10 @@ nav ul li a.download-cv:hover {
 }
 
 .header .image-frame img {
-    max-width: 450px;
-    height: 550px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    max-height: 500px;
     display: block;
     border: 2px solid var(--accent-color);
     border-radius: 10px;
@@ -269,11 +318,12 @@ nav ul li a.download-cv:hover {
 
 .content {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    gap: 40px;
+    gap: 30px;
     position: relative;
 }
 
@@ -285,6 +335,8 @@ nav ul li a.download-cv:hover {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: float 5s ease-in-out infinite;
+    flex: 0 0 auto;
+    max-width: 100%;
 }
 
 .content .image-frame:hover {
@@ -312,7 +364,8 @@ nav ul li a.download-cv:hover {
 }
 
 .content .image-frame img {
-    max-width: 400px;
+    width: 100%;
+    max-width: 350px;
     height: auto;
     border: 3px solid var(--accent-color);
     border-radius: 15px;
@@ -320,9 +373,10 @@ nav ul li a.download-cv:hover {
 }
 
 .info {
-    margin-left: 50px;
-    max-width: 450px;
+    margin-left: 30px;
+    max-width: 500px;
     text-align: left;
+    flex: 1 1 50%;
 }
 
 .info h2 {
@@ -394,7 +448,7 @@ nav ul li a.download-cv:hover {
     position: relative;
     max-width: 900px;
     margin: 0 auto;
-    padding: 40px 0;
+    padding: 40px 20px;
     background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(224, 242, 241, 0.9));
     border-radius: 10px;
     min-height: 200px;
@@ -416,7 +470,7 @@ nav ul li a.download-cv:hover {
     padding: 0 20px;
     position: relative;
     background: inherit;
-    width: 40%;
+    width: 45%;
     opacity: 1;
     transform: translateX(0);
     transition: all 0.6s ease-out;
@@ -432,7 +486,7 @@ nav ul li a.download-cv:hover {
 }
 
 .timeline-item.right {
-    left: 50%;
+    left: 55%;
 }
 
 .timeline-item.show {
@@ -441,7 +495,7 @@ nav ul li a.download-cv:hover {
 }
 
 .timeline-item.left {
-    left: 5%;
+    left: 0;
 }
 
 .timeline-item::after {
@@ -458,11 +512,11 @@ nav ul li a.download-cv:hover {
 }
 
 .timeline-item.left::after {
-    right: -40px;
+    right: -42px;
 }
 
 .timeline-item.right::after {
-    left: -40px;
+    left: -42px;
 }
 
 .timeline-item .content {
@@ -477,11 +531,11 @@ nav ul li a.download-cv:hover {
 }
 
 .timeline-item.left .content {
-    margin-right: 40px;
+    margin-right: 50px;
 }
 
 .timeline-item.right .content {
-    margin-left: 40px;
+    margin-left: 50px;
 }
 
 .timeline-item .content h3 {
@@ -519,6 +573,8 @@ nav ul li a.download-cv:hover {
     position: relative;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 0 0 calc(33.33% - 20px);
+    max-width: 300px;
 }
 
 .project-item:hover {
@@ -534,6 +590,7 @@ nav ul li a.download-cv:hover {
 }
 
 .project-item .image-frame img {
+    width: 100%;
     max-width: 250px;
     height: auto;
     border: none;
@@ -591,8 +648,8 @@ nav ul li a.download-cv:hover {
 /* Sở thích */
 .hobbies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(224, 242, 241, 0.9));
@@ -620,6 +677,7 @@ nav ul li a.download-cv:hover {
 }
 
 .hobby-item .image-frame img {
+    width: 100%;
     max-width: 180px;
     height: auto;
     border: none;
@@ -764,6 +822,8 @@ nav ul li a.download-cv:hover {
     border-radius: 10px;
     max-width: 400px;
     width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
     position: relative;
     box-shadow: 0 10px 20px var(--blue-glow);
     transform: scale(0.8);
@@ -845,6 +905,8 @@ nav ul li a.download-cv:hover {
     border-radius: 10px;
     max-width: 400px;
     width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
     position: relative;
     box-shadow: 0 10px 20px var(--blue-glow);
     transform: scale(0.8);
@@ -920,129 +982,6 @@ nav ul li a.download-cv:hover {
     100% { transform: translate(-50%, -50%); }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    .social-icons {
-        flex-direction: row;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-    .text-content {
-        text-align: center;
-    }
-    .header .image-frame img {
-        max-width: 300px;
-    }
-    .content {
-        flex-direction: column;
-        align-items: center;
-    }
-    .content .image-frame img {
-        max-width: 300px;
-    }
-    .info {
-        margin-left: 0;
-        text-align: center;
-    }
-    .info h2::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    .timeline::after {
-        left: 20px;
-    }
-    .timeline-item {
-        width: 80%;
-        left: 40px;
-    }
-    .timeline-item.right {
-        left: 40px;
-    }
-    .timeline-item::after {
-        left: -20px;
-    }
-    .timeline-item:first-child::after {
-        left: -20px;
-    }
-    .timeline-item .content {
-        padding: 25px;
-    }
-    nav ul li {
-        margin: 0 10px;
-    }
-    nav ul li a {
-        font-size: 14px;
-    }
-    .header h1 {
-        font-size: 36px;
-    }
-    .header h1:first-child {
-        font-size: 24px;
-    }
-    .header p {
-        font-size: 16px;
-    }
-    .section h2, .footer h2 {
-        font-size: 30px;
-    }
-    .contact-btn {
-        padding: 16px 40px;
-        font-size: 18px;
-    }
-}
-
-@media (max-width: 480px) {
-    .header h1 {
-        font-size: 28px;
-    }
-    .header h1:first-child {
-        font-size: 20px;
-    }
-    .header p {
-        font-size: 14px;
-    }
-    .project-item .image-frame img {
-        max-width: 200px;
-    }
-    .hobby-item .image-frame img {
-        max-width: 150px;
-    }
-    .content .image-frame img {
-        max-width: 250px;
-    }
-    .section h2, .footer h2 {
-        font-size: 24px;
-    }
-    .contact-btn {
-        padding: 14px 30px;
-        font-size: 16px;
-    }
-}
-
-/* Nút liên hệ */
-.contact-btn {
-    padding: 18px 50px;
-    font-size: 20px;
-    text-transform: uppercase;
-    z-index: 10;
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 5px 15px var(--blue-glow);
-    }
-    50% {
-        transform: scale(1.08);
-        box-shadow: 0 8px 20px var(--blue-glow);
-    }
-}
-
 /* Section Projects */
 #projects .projects {
     display: flex;
@@ -1054,7 +993,8 @@ nav ul li a.download-cv:hover {
 
 #projects .project-item {
     position: relative;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     overflow: hidden;
     border-radius: 10px;
     transition: box-shadow 0.3s ease;
@@ -1077,6 +1017,7 @@ nav ul li a.download-cv:hover {
 }
 
 #projects .image-frame img {
+    width: 100%;
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -1125,4 +1066,183 @@ nav ul li a.download-cv:hover {
     margin-top: 10px;
     font-size: 1.1rem;
     font-weight: 500;
+}
+
+.zoom-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.zoom-btn {
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-blue));
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.zoom-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px var(--blue-glow);
+}
+
+.zoom-btn:focus-visible {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    .social-icons {
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .text-content {
+        text-align: center;
+        flex: 1 1 100%;
+    }
+    .header .image-frame img {
+        max-width: 300px;
+        max-height: 400px;
+    }
+    .content {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .content .image-frame img {
+        max-width: 300px;
+    }
+    .info {
+        margin-left: 0;
+        text-align: center;
+        flex: 1 1 100%;
+    }
+    .info h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .timeline::after {
+        left: 15px;
+    }
+    .timeline-item {
+        width: calc(100% - 50px);
+        left: 35px;
+    }
+    .timeline-item.right {
+        left: 35px;
+    }
+    .timeline-item::after {
+        left: -30px;
+    }
+    .timeline-item.left::after {
+        left: -30px;
+    }
+    .timeline-item .content {
+        padding: 15px;
+        margin-left: 0;
+        margin-right: 20px;
+    }
+    .project-item {
+        flex: 0 0 calc(50% - 20px);
+        max-width: 350px;
+    }
+    .hobbies-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .zoom-controls {
+        bottom: 15px;
+        right: 15px;
+        gap: 8px;
+    }
+    .zoom-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+    .header h1 {
+        font-size: 36px;
+    }
+    .header h1:first-child {
+        font-size: 24px;
+    }
+    .header p {
+        font-size: 16px;
+    }
+    .section h2, .footer h2 {
+        font-size: 30px;
+    }
+    .contact-btn {
+        padding: 16px 40px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 28px;
+    }
+    .header h1:first-child {
+        font-size: 20px;
+    }
+    .header p {
+        font-size: 14px;
+    }
+    .project-item {
+        flex: 0 0 100%;
+        max-width: 300px;
+    }
+    .project-item .image-frame img {
+        max-width: 100%;
+    }
+    .hobby-item .image-frame img {
+        max-width: 150px;
+    }
+    .content .image-frame img {
+        max-width: 250px;
+    }
+    .section h2, .footer h2 {
+        font-size: 24px;
+    }
+    .contact-btn {
+        padding: 14px 30px;
+        font-size: 16px;
+    }
+    .zoom-controls {
+        display: none; /* Ẩn nút zoom trên màn hình rất nhỏ để tránh che khuất nội dung */
+    }
+}
+
+/* Nút liên hệ */
+.contact-btn {
+    padding: 18px 50px;
+    font-size: 20px;
+    text-transform: uppercase;
+    z-index: 10;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 5px 15px var(--blue-glow);
+    }
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 8px 20px var(--blue-glow);
+    }
 }
